@@ -21,9 +21,8 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
 FetchContent_MakeAvailable(glfw)
-
-add_executable(RayTracer
-    src/main.cpp
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
+add_executable(RayTracer ${SOURCES}
 )
 # find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)

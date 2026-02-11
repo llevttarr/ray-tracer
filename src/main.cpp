@@ -1,29 +1,21 @@
-#include <iostream>
+//#include <iostream>
+//#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "./app/window.h"
+#include "./render/renderer.h"
 
 int main(int argc, char* argv[]) {
-    GLFWwindow* window;
-
-    if (!glfwInit())
-        return -1;
-
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
+    Window window(640, 480, "Hello World");
+    Renderer renderer(window);
+    // raytracer
+    // scene
+    // camera
+    while (!window.should_close())
     {
-        glfwTerminate();
-        return -1;
+        // raytracer
+        renderer.run();
+        window.swap_buffers();
+        window.poll_events();
     }
-
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
-
-    while (!glfwWindowShouldClose(window))
-    {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
     return 0;
 }

@@ -1,0 +1,22 @@
+#ifndef WINDOW_H
+#define WINDOW_H
+
+#include <GLFW/glfw3.h>
+#include <string>
+
+// TODO: give config to constructor instead 
+class Window {
+public:
+    Window(int w,int h,const std::string& title);
+    ~Window();
+
+    bool should_close() const;
+    void poll_events();
+    void swap_buffers();
+
+private:
+    GLFWwindow* glfw_window;
+    int width;
+    int height;
+};
+#endif //WINDOW_H
