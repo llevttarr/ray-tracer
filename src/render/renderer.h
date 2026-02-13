@@ -1,12 +1,15 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-class Window;
+#include "shader.h"
+
 class Renderer {
 public:
-    explicit Renderer(Window& window): wind(window){};
+    explicit Renderer(int width, int height);
     void run();
 private:
-    Window& wind;
+    int w;
+    int h;
+    Shader shader;
 };
 #endif //RENDERER_H

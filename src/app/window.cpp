@@ -29,3 +29,9 @@ void Window::poll_events(){
 void Window::swap_buffers(){
     glfwSwapBuffers(glfw_window);
 }
+int Window::get_h(){
+    return height;
+}
+int Window::get_w(){
+    return width;
+}

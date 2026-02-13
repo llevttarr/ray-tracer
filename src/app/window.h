@@ -14,6 +14,9 @@ public:
     void poll_events();
     void swap_buffers();
 
+    int get_w();
+    int get_h();
+
 private:
     GLFWwindow* glfw_window;
     int width;
