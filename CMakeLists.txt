@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(RayTracer VERSION 0.0.1 LANGUAGES CXX)
+project(RayTracer VERSION 0.0.1 LANGUAGES C CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
@@ -24,10 +24,14 @@ FetchContent_MakeAvailable(glfw)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_executable(RayTracer ${SOURCES}
 )
+add_library(glad external/glad/src/gl.c)
+
+target_include_directories(glad PUBLIC external/glad/include)
 # find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 target_link_libraries(RayTracer
     PRIVATE
         glfw
         OpenGL::GL
+        glad
 )
