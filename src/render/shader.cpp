@@ -5,12 +5,12 @@
 
 Shader::Shader(const std::string& vert_path, const std::string& frag_path){
     const std::string vert=read_file(vert_path);
-    const std::string frag=read_file(vert_path);
+    const std::string frag=read_file(frag_path);
     if (vert=="" || frag==""){
         throw ShaderLoadException("frag or vert shader couldn't be read");
     }
     GLuint vert_s=create_shader(GL_VERTEX_SHADER,vert);
-    GLuint frag_s=create_shader(GL_VERTEX_SHADER,frag);
+    GLuint frag_s=create_shader(GL_FRAGMENT_SHADER,frag);
     progr=create_shader_program(vert_s,frag_s);
 
     glDeleteShader(vert_s);
@@ -40,7 +40,7 @@ GLuint Shader::create_shader(GLenum t,const std::string& s){
     GLint status=0;
     glGetShaderiv(shader,GL_COMPILE_STATUS,&status);
     if(status==0){
-        throw ShaderLoadException("could not create shader "+t);
+        throw ShaderLoadException("could not create shader ");
     }
     return shader;
 }

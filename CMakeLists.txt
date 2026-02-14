@@ -24,6 +24,12 @@ FetchContent_MakeAvailable(glfw)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_executable(RayTracer ${SOURCES}
 )
+add_custom_command(TARGET RayTracer POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/assets
+            $<TARGET_FILE_DIR:RayTracer>/assets
+)
+
 add_library(glad external/glad/src/gl.c)
 
 target_include_directories(glad PUBLIC external/glad/include)
