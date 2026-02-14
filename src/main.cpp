@@ -5,14 +5,9 @@
 #include "./render/renderer.h"
 
 int main(int argc, char* argv[]) {
-    Window window(640, 480, "Hello World");
+    Window window(640, 480, "Ray tracer");
     Renderer renderer(window.get_w(),window.get_h());  // resize?
-    // raytracer
-    // scene
-    // camera
-    while (!window.should_close())
-    {
-        // raytracer
+    while (!window.should_close()){
         renderer.run();
         window.swap_buffers();
         window.poll_events();

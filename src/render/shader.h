@@ -3,10 +3,10 @@
 
 #include <string>
 #include <glad/gl.h>
-#include <cstdint>
 #include <stdexcept>
+#include "../util/glsl_util.h"
 
-struct ShaderLoadException: public std::runtime_error{
+struct ShaderUseException: public std::runtime_error{
     using std::runtime_error::runtime_error;
 };
 
@@ -21,9 +21,9 @@ public:
     
 private:
     GLuint progr=0;
-    std::string read_file(const std::string& filename);
-    GLuint create_shader(GLenum t,const std::string& s);
-    GLuint create_shader_program(GLuint vert, GLuint frag);
+    // std::string read_file(const std::string& filename);
+    // GLuint create_shader(GLenum t,const std::string& s);
+    // GLuint create_shader_program(GLuint vert, GLuint frag);
 };
 
 #endif //SHADER_H

@@ -10,9 +10,9 @@ Renderer::Renderer(int width, int height)
 
     // shader = Shader("assets/shaders/vs.vert", "assets/shaders/fs.frag");
 
-    float temp[] = {-0.5f,-0.5f,0.0f,
-         0.5f,-0.5f,0.0f,
-         0.0f,0.5f,0.0f};
+    float temp[] = {-0.25f,-0.25f,0.0f,
+         0.25f,-0.25f,0.0f,
+         0.0f,0.25f,0.0f};
 
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -36,4 +36,8 @@ void Renderer::run(){
     shader.use();
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+void Renderer::resize(int nw, int nh){
+    h=nh;
+    w=nw;
 }

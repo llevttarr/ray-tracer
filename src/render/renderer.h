@@ -8,6 +8,7 @@ public:
     explicit Renderer(int width, int height);
     ~Renderer();
     void run();
+    void resize(int nw, int nh);
 private:
     int w;
     int h;
